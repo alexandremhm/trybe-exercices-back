@@ -34,3 +34,23 @@ Escreva uma query para exibir por quantas empresas a peça 1 é provida.
 SELECT COUNT(*) FROM Provides
 WHERE Piece = '1'
 ```
+
+Find the movies released in the years between 2000 and 2010 
+
+```sql
+SELECT * FROM movies
+WHERE Year BETWEEN 2000 AND 2010
+```
+
+Find the movies not released in the years between 2000 and 2010
+
+```sql
+SELECT * FROM movies
+WHERE Year NOT BETWEEN 2000 AND 2010
+```
+
+Find the first 5 Pixar movies and their release year
+
+```sql
+SELECT Title, Year FROM movies LIMIT 5
+```

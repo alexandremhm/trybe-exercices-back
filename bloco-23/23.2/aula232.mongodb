@@ -1,0 +1,63 @@
+use('aula-filter-operators');
+
+// db.filmes.find({
+//   ano: {
+//     $eq: 1968
+//   }
+// });
+
+// db.filmes.find({
+//   titulo: /i/
+// });
+
+// db.filmes.find({
+//   titulo: /^Me/
+// });
+
+// db.filmes.find({
+//   titulo: /as$/
+// });
+
+// db.filmes.find({
+//   $and: [{
+//     ano:{ 
+//       $gt: 2008
+//     }
+//   }, 
+//   { 
+//   'avaliacao.bom': { 
+//     $gte: 6 
+//     }
+//     }]
+// })
+
+// db.filmes.find({
+//   editora: {
+//     $exists: false
+//   }
+// })
+
+// db.filmes.find({}, {titulo: 1}).sort({
+//   titulo: 1
+// })
+
+// db.filmes.find({
+//   ano: {
+//     $gt: 2000
+//   }
+// }).count();
+
+// db.filmes.count({
+//   ano: {
+//     $gt: 2000
+//   }
+// });
+
+// db.filmes.deleteOne({ titulo: "O Planeta dos Macacos" })
+
+// db.filmes.deleteMany({
+//   'avaliacao.ruim' :{
+//     $gt: 6
+//   }
+// })
+

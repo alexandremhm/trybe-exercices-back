@@ -8,3 +8,7 @@ SELECT * FROM country WHERE country != 'Brazil';
 SELECT * FROM country ORDER BY country_id;
 SELECT * FROM country WHERE country LIKE '%gla%';
 ```
+
+SENHA mysql
+
+alexandremhm e senha alexandremhm

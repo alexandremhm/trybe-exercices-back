@@ -1,0 +1,32 @@
+// O operador $pull remove de um array existente todos os elementos com um ou mais valores que atendam à condição especificada.
+
+db.supplies.updateMany(
+  {},
+  {
+pull: {
+      items: {
+        name: { $in: ["pens", "envelopes"] },
+      },
+    },
+  },
+);
+
+
+db.profiles.updateOne(
+  { _id: 1 },
+  {
+pull: {
+      votes: { $gte: 6 },
+    },
+  },
+);
+
+
+db.survey.updateMany(
+  {},
+  {
+pull: {
+      results: { score: 8 , item: "B" },
+    },
+  },
+);

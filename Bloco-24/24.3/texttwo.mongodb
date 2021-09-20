@@ -1,0 +1,5 @@
+db.articles.find({ $text: { $search: "coffee" } });
+
+db.articles.find({ $text: { $search: "bake coffee cake" } });
+
+db.articles.find({ $text: { $search: "\"coffee shop\"" } });

@@ -1,0 +1,5 @@
+//  O operador $size seleciona documentos em que um array contenha um número de elementos especificado.
+
+db.products.find(
+  { tags: { $size: 2 } }
+);

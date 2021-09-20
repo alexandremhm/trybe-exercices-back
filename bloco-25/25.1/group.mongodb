@@ -1,0 +1,78 @@
+// Exemplo 1: Contando o número de documentos
+
+db.sales.aggregate([
+  {
+group: {
+      _id: null,
+      count: { $sum: 1 }
+    }
+  }
+]);
+
+// Exemplo 2: Retornando valores distintos
+
+db.sales.aggregate([
+  {
+group : {
+      _id : "$item",
+      count: { $sum: 1}
+    }
+  }
+]);
+
+// Exemplo 3: Somando valores
+
+db.sales.aggregate([
+  {
+group : {
+      _id : "$item",
+      totalSaleAmount: {
+sum: {
+multiply: ["$price", "$quantity"]
+        }
+      }
+    }
+  }
+]);
+
+// Exemplo 4: Having (do Mysql), combinando estágios no aggregate
+
+db.sales.aggregate([
+  // Primeiro Estágio
+  {
+group: {
+      _id : "$item",
+      totalSaleAmount: {
+sum: {
+multiply: ["$price", "$quantity"]
+        }
+      }
+    }
+  },
+  // Segundo Estágio
+  {
+match: { "totalSaleAmount": { $gte: 100 } }
+  }
+]);
+
+// Exemplo 5: Agrupando por null
+
+db.sales.aggregate([
+  {
+$group : {
+      _id : null,
+      totalSaleAmount: {
+$sum: { $multiply: ["$price", "$quantity"] }
+      },
+      averageQuantity: { $avg: "$quantity" },
+      count: { $sum: 1 }
+    }
+  }
+]);
+
+{
+  "_id" : null,
+  "totalSaleAmount" : NumberDecimal("452.5"),
+  "averageQuantity" : 7.875,
+  "count" : 8
+}

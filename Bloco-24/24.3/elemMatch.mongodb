@@ -1,0 +1,10 @@
+// O operador $elemMatch seleciona os documentos que contêm um campo do tipo array com pelo menos um elemento que satisfaça todos os critérios de seleção especificados. Ou seja, com esse operador você pode especificar várias queries para um mesmo array .
+
+
+db.scores.find(
+  { results: { $elemMatch: { $gte: 80, $lt: 85 } } }
+);
+
+db.survey.find(
+  { results: { $elemMatch: { product: "xyz", score: { $gte: 8 } } } }
+);

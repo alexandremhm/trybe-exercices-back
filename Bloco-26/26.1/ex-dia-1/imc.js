@@ -35,3 +35,5 @@ const imcCalculator = (height, weight) => {
 };
 
 imcCalculator(height, weight);
+
+// npm start

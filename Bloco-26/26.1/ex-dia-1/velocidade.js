@@ -10,3 +10,5 @@ const calculaVelocidadeMed = () => {
 }
 
 calculaVelocidadeMed();
+
+// npm run velocidade

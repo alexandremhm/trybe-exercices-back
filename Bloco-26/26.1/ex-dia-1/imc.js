@@ -36,4 +36,6 @@ const imcCalculator = (height, weight) => {
 
 imcCalculator(height, weight);
 
+module.exports = { imcCalculator }
+
 // npm start

@@ -1,33 +1,34 @@
-const readline = require('readline-sync');
+const readline = require("readline-sync");
 
 const randomNumberGenerator = () => {
-  return parseInt(Math.random() * 10)
-}
+  return parseInt(Math.random() * 10);
+};
 
-const lotery = () => {  
+const lotery = () => {
   const randomNumber = randomNumberGenerator();
-  const numberInput = readline.questionInt('Insira um número de 0 a 10: ');
+  const numberInput = readline.questionInt("Insira um número de 0 a 10: ");
 
-  if(numberInput === randomNumber) {
-    return console.log("Parabéns, número correto!")
-  } 
-    console.log(`Opa, não foi dessa vez. O número era ${randomNumber}`)
-  
-}
+  if (numberInput === randomNumber) {
+    return console.log("Parabéns, número correto!");
+  }
+  console.log(`Opa, não foi dessa vez. O número era ${randomNumber}`);
+};
 
 const doYouWantToPlayAgain = () => {
-  return answer = readline.keyInYN('Gostaria de jogar novamente?');
+  return (answer = readline.keyInYN("Gostaria de jogar novamente?"));
 };
 
 const playGame = () => {
   lotery();
   const booleanResponse = doYouWantToPlayAgain();
 
-  if(booleanResponse) {
+  if (booleanResponse) {
     playGame();
   } else {
     console.log("Ok, até mais!!!");
-  };
+  }
 };
 
-playGame()
+playGame();
+
+module.exports = { playGame }

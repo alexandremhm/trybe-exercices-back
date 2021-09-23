@@ -12,3 +12,5 @@ const calculaVelocidadeMed = () => {
 calculaVelocidadeMed();
 
 // npm run velocidade
+
+module.exports = { calculaVelocidadeMed }

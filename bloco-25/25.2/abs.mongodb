@@ -1,0 +1,9 @@
+db.ratings.aggregate([
+  {
+$project: {
+      delta: {
+$abs: { $subtract: ["$start", "$end"] }
+      }
+    }
+  }
+]);

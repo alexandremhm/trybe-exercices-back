@@ -1,0 +1,12 @@
+// db.sales.aggregate([
+//   { $project: { item: 1, total: { $add: ["$price", "$fee"] } } }
+// ]);
+
+// db.sales.aggregate([
+//   { $project: { item: 1, billing_date: { $add: ["$date", 2.592e+8] } } }
+// ]);
+
+// db.sales.aggregate([
+//   { $project: { item: 1, billing_date: { $add: ["$date", 3 * 24 * 60 * 60000] } } }
+// ]);
+

@@ -1,0 +1,27 @@
+// Calcule qual o valor total em estoque de cada produto, considerando o preço de venda e a quantidade;
+
+// use('storage');
+
+// db.products.aggregate([
+//   { $project: {
+//     name: 1,
+//     _id: 0,
+//     total_estoque: {
+//       $multiply: ["$sale_price", "$quantity"]
+//     }
+//   }}
+// ])
+
+// Calcule qual será o lucro total de cada produto caso todo o estoque seja vendido.
+
+// use('storage');
+
+// db.products.aggregate([
+//   { $project: {
+//     name: 1,
+//     _id: 0,
+//     lucro_total: {
+//       $subtract: [{ $multiply: ["$sale_price", "$quantity"] }, { $add: ["$purchase_price", "$taxes"]}]
+//     }
+//   }}
+// ])

@@ -1,0 +1,89 @@
+use ('agg_example');
+
+//  {
+//     "_id": {
+//       "$oid": "6144e7676b3e420854fa226a"
+//     },
+//     "name": "Dave America",
+//     "State": "Florida"
+//   },
+
+  //  {
+  //   "_id": {
+  //     "$oid": "6144dd3e7bbe6913626cc0c3"
+  //   },
+  //   "value": 5900,
+  //   "from": "Dave America",
+  //   "to": "Ned Flanders",
+  //   "bank": "International"
+  // },
+
+// Selecione todos os clientes com as suas respectivas transações feitas;
+
+// use('agg_example');
+// db.clients.aggregate([
+//   {
+//     $lookup: {
+//       from: "transactions",
+//       let: { user_name: "$name" },
+//       pipeline: [
+//         {
+//           $match: {
+//             $expr: {
+//               $eq: ["$from", "$$user_name"],
+//             }
+//           }
+//         }
+//       ],
+//       as: "transactions"
+//     }
+//   }
+// ]);
+
+// Selecione os quatro primeiros clientes com as suas respectivas transações recebidas ordenados pelo estado em ordem alfabética;
+
+// db.clients.aggregate([
+//   {
+//     $lookup: {
+//       from: "transactions",
+//       let: { user_name: "$name" },
+//       pipeline: [
+//         {
+//           $match: {
+//             $expr: {
+//               $eq: ["$to", "$$user_name"],
+//             }
+//           }
+//         }
+//       ],
+//       as: "received_transactions"
+//     }
+//   },
+//   { $sort: { state: 1 }},
+//   { $limit: 4 },
+// ]);
+
+// Selecione todos os clientes do estado da "Florida" e suas respectivas transações recebidas.
+
+use('agg_example');
+db.clients.aggregate([
+  {
+    $match: { State: "Florida" }
+  },
+  {
+    $lookup: {
+      from: "transactions",
+      let: { user_name: "$name"},
+      pipeline: [
+        {
+          $match: {
+            $expr: {
+              $eq: ["$to", "$$user_name"],
+            }
+          }
+        }
+      ],
+      as: "received_transactions"
+    }
+  },
+]);

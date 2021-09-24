@@ -1,0 +1,10 @@
+db.planning.aggregate([
+  {
+$project: {
+      name: 1,
+      workdays: {
+$divide: ["$hours", 8]
+      }
+    }
+  }
+]);

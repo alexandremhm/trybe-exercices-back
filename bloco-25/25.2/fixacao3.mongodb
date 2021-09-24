@@ -1,0 +1,22 @@
+// Retorne o menor número inteiro relativo ao preço de venda de cada produto;
+// use('storage')
+// db.products.aggregate([
+//   { $project: { roundedValue: { $floor: ["$sale_price"]}}}
+// ])
+
+// Retorne o maior número inteiro relativo ao lucro total sobre cada produto. Nota: Desconsiderar taxas (taxes)
+
+
+  use('storage')
+
+  db.products.aggregate([
+    { $project: {
+      _id: 0,
+      name: 1,
+      ceil_price: {
+        $ceil: {
+          $subtract: ["$sale_price", "$purchase_price"]
+        }
+      }
+    }}
+]);

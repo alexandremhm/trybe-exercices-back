@@ -1,29 +1,28 @@
 const fs = require('fs').promises;
 
-Promise.all([
-  fs.readFile('file1.txt'),
-  fs.readFile('file2.txt'),
-  fs.readFile('file3.txt'),
-])
-  .then(([file1, file2, file3]) => {
-    const fileSizeSum = file1.byteLength + file2.byteLength + file3.byteLength;
-    console.log(`Lidos 3 arquivos totalizando ${fileSizeSum} bytes`);
-  })
-  .catch((err) => {
-    console.error(`Erro ao ler arquivos: ${err.message}`);
-  });
+const arr = ['Finalmente', 'estou', 'usando', 'Promise.all', '!!!']
 
-  const arr = ['Finalmente', 'estou', 'usando', 'Promise.all', '!!!']
+const createNewFiles = (array) => {
+  return Promise.all(
+    array.map((item, index) => {
+      return fs.writeFile(`file${index + 1}.txt`, item);
+    })
+  );
+}
 
-  const createNewFiles = (array) => {
-    Promise.all([
-      fs.writeFile('file1.txt'),
-      fs.writeFile('file2.txt'),
-      fs.writeFile('file3.txt'),
-      fs.writeFile('file2.txt'),
-      fs.writeFile('file3.txt'),
-    ])
-    
+const readFiles = (array) => {
+  createNewFiles(array)
+    .then((data) => {
+      return Promise.all(
+        data.map((_item, index) => {
+          return fs.readFile(`file${index + 1}.txt`);
+          })
+      ).then((data) => {
+        const fileSum = data.join(' ');
+        return fs.writeFile('file-sum.txt', fileSum);
+      })
+    })  
+}
 
-  }
+readFiles(arr)
   

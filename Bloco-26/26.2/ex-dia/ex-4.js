@@ -2,21 +2,21 @@ const fs = require('fs').promises;
 
 // Crie uma função que leia todos os dados do arquivo e imprima cada personagem no formato id - Nome . Por exemplo: 1 - Homer Simpson .
 
-// const printCharacters = async () => {
-//   try{
-//     await fs.readFile("./simpsons.json", 'utf8')
-//       .then((data) => {
-//         return JSON.parse(data)
-//       })
-//       .then((data) => {
-//         return data.map(({ id, name }) => console.log(`${id} - ${name}`))
-//       })
-//     }
-//     catch(err) {
-//       console.error(`Não foi possível ler o arquivo "./simpsons.json"\n Erro: ${err}`);
-//       process.exit(1); // Encerra a execução do script e informa ao sistema operacional que houve um erro com código
-//     };
-// }
+const printCharacters = async () => {
+  try{
+    await fs.readFile("./simpsons.json", 'utf8')
+      .then((data) => {
+        return JSON.parse(data)
+      })
+      .then((data) => {
+        return data.map(({ id, name }) => console.log(`${id} - ${name}`))
+      })
+    }
+    catch(err) {
+      console.error(`Não foi possível ler o arquivo "./simpsons.json"\n Erro: ${err}`);
+      process.exit(1); // Encerra a execução do script e informa ao sistema operacional que houve um erro com código
+    };
+}
 
 // printCharacters();
 

@@ -9,3 +9,13 @@ apps:
     SECRET: PRODUCTION
   env_homolog:
     ENVIRONMENT: HOMOLOG
+- name: teste2
+  script: ./index2.js
+  watch: ./
+  exec_mod: cluster
+  instances: max
+  max_memory_restart: 100M
+  env_prod:
+    SECRET: PRODUCTION
+  env_homolog:
+    ENVIRONMENT: HOMOLOG
